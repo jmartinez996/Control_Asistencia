@@ -7,13 +7,23 @@ import { HttpClientModule } from '@angular/common/http'
 import { RegistroComponent } from './pages/registro/registro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { JfhomeComponent } from './pages/jefes/jfhome/jfhome.component';
+import { EmhomeComponent } from './pages/empleados/emhome/emhome.component';
+import { EmpleadosComponent } from './pages/jefes/empleados/empleados.component';
+import { JfnavbarComponent } from './pages/jefes/jfnavbar/jfnavbar.component';
+import { EmnavbarComponent } from './pages/empleados/emnavbar/emnavbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    JfhomeComponent,
+    EmhomeComponent,
+    EmpleadosComponent,
+    JfnavbarComponent,
+    EmnavbarComponent
   ],
   imports: [
     BrowserModule,

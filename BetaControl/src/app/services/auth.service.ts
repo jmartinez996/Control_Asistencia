@@ -12,6 +12,7 @@ export class AuthService {
     private url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty';
     private apikey = 'AIzaSyA0_LElkrpaI28jB--EpwdCDvpeppbhjlM';
 
+    private BD = 'https://chamacos-43961.firebaseio.com';
     userToken: string;
   // Crea nuevo Usuario
   // https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=[API_KEY]

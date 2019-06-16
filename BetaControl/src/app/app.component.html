@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<div *ngIf="leerToken()">
+    <app-jfnavbar></app-jfnavbar>
+</div>
+
+<div class="container main-container">
+    <router-outlet></router-outlet>
+</div>

@@ -4,12 +4,12 @@ import { UsuarioModel } from '../Models/usuario.model';
 import { AuthService } from '../../services/auth.service';
 import { switchAll } from 'rxjs/operators';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
+  // styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   usuario: UsuarioModel = new UsuarioModel();
@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    if ( localStorage.getItem('email') ){
+    if ( localStorage.getItem('email') ) {
       this.usuario.email = localStorage.getItem('email');
       this.recuerdame = true;
     }
   }
-  login(form: NgForm){
+  login(form: NgForm) {
 
     if (form.invalid) { return; }
     Swal.fire({
@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
     });
     Swal.showLoading();
     this.auth.login(this.usuario)
-    .subscribe( resp => {
+    .subscribe( (resp: any) => {
       console.log(resp);
       Swal.close();
-      if ( this.recuerdame ){
+      if ( this.recuerdame ) {
         localStorage.setItem('email', this.usuario.email);
       }
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/jfhome');
     }, (err) => {
       console.log(err.error.error.message);
       Swal.fire({
