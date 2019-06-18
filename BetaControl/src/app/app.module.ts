@@ -12,6 +12,8 @@ import { EmhomeComponent } from './pages/empleados/emhome/emhome.component';
 import { EmpleadosComponent } from './pages/jefes/empleados/empleados.component';
 import { JfnavbarComponent } from './pages/jefes/jfnavbar/jfnavbar.component';
 import { EmnavbarComponent } from './pages/empleados/emnavbar/emnavbar.component';
+import { AusenciaRetrasoComponent } from './pages/jefes/ausencia-retraso/ausencia-retraso.component';
+import { SolicitudesComponent } from './pages/jefes/solicitudes/solicitudes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { EmnavbarComponent } from './pages/empleados/emnavbar/emnavbar.component
     EmhomeComponent,
     EmpleadosComponent,
     JfnavbarComponent,
-    EmnavbarComponent
+    EmnavbarComponent,
+    AusenciaRetrasoComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,

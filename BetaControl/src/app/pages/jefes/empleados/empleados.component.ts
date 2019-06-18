@@ -26,6 +26,12 @@ export class EmpleadosComponent implements OnInit {
     this.usuario = new UsuarioModel();
     this.usuario.email = '';
     this.empleado = new EmpleadoModel();
+    this.getempleados()
+    .subscribe( resp => {
+    console.log(resp);
+    }, (err) => {
+      console.log(err.error.error.message);
+    });
   }
   
   onSubmit( form: NgForm ) {
@@ -72,6 +78,10 @@ export class EmpleadosComponent implements OnInit {
     }
     crearDepto( empleado: EmpleadoModel, id: any ) {
       return this.http.put(`${ this.url }/${ id }/empleado.json`, empleado);
+    }
+    getempleados(){
+      return this.http.get(`${ this.url }.json`);
+      //return this.http.get('https://chamacos-43961.firebaseio.com/BaseDatos.json');
     }
   }
 
