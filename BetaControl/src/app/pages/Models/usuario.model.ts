@@ -17,3 +17,6 @@ export class EmpleadoModel {
 
 
 }
+export class Departamento {
+    nombre: string;
+}

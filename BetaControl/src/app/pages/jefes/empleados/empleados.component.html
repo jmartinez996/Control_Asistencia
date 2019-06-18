@@ -1,162 +1,114 @@
 <input class="form-control" type="text" searchable="Search here.." placeholder=" Search " aria-label="Search ">
+<div class="modal" id="demoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar Empleado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit( f )" #f="ngForm">
+                    <h5>Datos Personales</h5>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rut</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.rut" name="rut" placeholder="Rut" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Nombre</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.nombre" name="nombre" placeholder="Nombre" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Apellido Paterno</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.apellidopaterno" name="Apaterno" placeholder="Apellido Materno" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Apellido Materno</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.apellidomaterno" name="Amaterno" placeholder="Apellido Materno" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Sexo</span>
+                        </div>
+                        <select class="form-control" placeholder="Nombre" [(ngModel)]="empleado.sexo" name="sexo" aria-describedby="addon-wrapping">
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Fecha Nacimiento</span>
+                        </div>
+                        <input type="date" class="form-control" [(ngModel)]="empleado.fechaNac" name="fecha" placeholder="Nombre" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">email</span>
+                        </div>
+                        <input type="email" class="form-control" [(ngModel)]="usuario.email" [(ngModel)]="empleado.email" name="email" placeholder="email" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Domicilio</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.domicilio" name="domicilio" placeholder="Domicilio" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Telefono</span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="empleado.telefono" name="telefono" placeholder="Telefono" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Contraseña</span>
+                        </div>
+                        <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password" placeholder="contraseña" aria-describedby="addon-wrapping">
+                    </div>
+                    <h5>Datos Administrativos</h5>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Departamento</span>
+                        </div>
+                        <select class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping">
+                                <option>depto1</option>
+                                <option>depto2</option>
+                        </select>
+                    </div>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tipo de Registro</span>
+                        </div>
+                        <select class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping">
+                                <option>Jefe</option>
+                                <option>Empleado</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoModal">Registrar un Empleado</button><br>
 <div class="card jose " style="width: 18rem; ">
     <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
     <ul class="list-group list-group-flush ">
         <li class="list-group-item ">Nombre Jose</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
-    </ul>
-    <div class="card-body ">
-        <div class="row ">
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
-            </div>
-            <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card jose " style="width: 18rem; ">
-    <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
-    <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre</li>
         <li class="list-group-item ">Rut</li>
         <li class="list-group-item ">Departamento</li>
         <li class="list-group-item ">Jefe Supervisor</li>
