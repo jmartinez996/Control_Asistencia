@@ -32,6 +32,7 @@ export class EmpleadosComponent implements OnInit {
     }, (err) => {
       console.log(err.error.error.message);
     });
+    console.log('hola');
   }
   
   onSubmit( form: NgForm ) {
