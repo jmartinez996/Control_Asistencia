@@ -79,18 +79,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Departamento</span>
                         </div>
-                        <select class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping">
-                                <option>depto1</option>
-                                <option>depto2</option>
+                        <select class="form-control" [(ngModel)]="depto.nombre" name="sexo" placeholder="Nombre" aria-describedby="addon-wrapping">
+                                <option value="depto1">depto1</option>
+                                <option value="depto2">depto2</option>
                         </select>
+
                     </div>
                     <div class="input-group k1">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Tipo de Registro</span>
                         </div>
                         <select class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping">
-                                <option>Jefe</option>
-                                <option>Empleado</option>
+                                <option value value="jefe">Jefe</option>
+                                <option value="empleado">Empleado</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -105,25 +106,59 @@
 </div>
 <br>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demoModal">Registrar un Empleado</button><br>
-<div class="card jose " style="width: 18rem; ">
+
+<div *ngFor="let item of Aemple; let i = index" class="card jose " style="width: 18rem; ">
     <img src="../../../../assets/images/img/img.png " class="card-img-top " alt="... ">
     <ul class="list-group list-group-flush ">
-        <li class="list-group-item ">Nombre Jose</li>
-        <li class="list-group-item ">Rut</li>
-        <li class="list-group-item ">Departamento</li>
-        <li class="list-group-item ">Jefe Supervisor</li>
+        <li class="list-group-item ">Nombre {{ item.empleado.nombre }}</li>
+        <li class="list-group-item ">Rut {{ item.empleado.rut }}</li>
+        <li class="list-group-item ">Departamento {{ item.departamento.nombre}}</li>
+        <li class="list-group-item ">Jefe Supervisor {{item.departamento.nombreJefe}}</li>
     </ul>
+
     <div class="card-body ">
         <div class="row ">
             <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></a>
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editModal"><img src="../../../../assets/images/icons/edit.png " width=25px height=25px></button><br>
             </div>
             <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></a>
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#hourModal"><img src="../../../../assets/images/icons/hour.png " width=25px height=25px></button><br>
             </div>
             <div class="col-sm-4 ">
-                <a href="# " class="card-link "><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></a>
+                <button type="button" (click)="deleteEmpleado( item.id ) " class="btn btn-outline-danger"><img src="../../../../assets/images/icons/delete.png " width=25px height=25px></button><br>
             </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Empleado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit( f )" #f="ngForm">
+                    <h5>Datos Personales</h5>
+                    <div class="input-group k1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rut</span>
+                        </div>
+                        <h1>{{ value.id }}</h1>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" type="submit">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

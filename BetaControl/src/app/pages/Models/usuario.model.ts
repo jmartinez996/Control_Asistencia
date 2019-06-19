@@ -17,6 +17,10 @@ export class EmpleadoModel {
 
 
 }
-export class Departamento {
+export class DepartamentoModel {
     nombre: string;
+    nombreJefe = 'jose';
+}
+export class ValoresModel {
+    id: string;
 }
