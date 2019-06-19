@@ -33,7 +33,7 @@ import { SolicitudesComponent } from './pages/jefes/solicitudes/solicitudes.comp
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

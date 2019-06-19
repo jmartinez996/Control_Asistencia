@@ -1,0 +1,13 @@
+@media all and (min-width: 768px) {
+    tr  {
+        vertical-align: middle !important;
+    }
+    
+    td {
+        vertical-align: center !important;
+    }
+    
+    span {
+        padding: 1rem 1rem;
+    }
+  }
