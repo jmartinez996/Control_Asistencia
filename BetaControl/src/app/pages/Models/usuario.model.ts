@@ -25,6 +25,7 @@ export class ValoresModel {
     id: string;
 }
 export class SolicitudEmpleado {
+    id: string;
     tipo: string;
     rut: string;
     fecha: string;

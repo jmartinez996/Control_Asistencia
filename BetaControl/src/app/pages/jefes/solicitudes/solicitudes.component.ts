@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioModel, EmpleadoModel, SolicitudEmpleado } from '../../Models/usuario.model';
+import { UsuarioModel, EmpleadoModel, SolicitudEmpleado, ValoresModel } from '../../Models/usuario.model';
 import { AuthService } from '../../../services/auth.service';
 import { NgForm, FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -13,10 +13,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./solicitudes.component.css']
 })
 export class SolicitudesComponent implements OnInit {
-  private url = 'https://chamacos-43961.firebaseio.com/BaseDatos/solicitud';
+  private url = 'https://chamacos-43961.firebaseio.com/BaseDatos';
+  private url1 = 'https://chamacos-43961.firebaseio.com/registros';
+ 
   solicitud: SolicitudEmpleado;
   Aemple: SolicitudEmpleado[] = [];
-
+  Aemple1: SolicitudEmpleado[] = [];
+  value: ValoresModel;
   constructor(private auth: AuthService,
               private router: Router,
               private http: HttpClient) {
@@ -25,32 +28,61 @@ export class SolicitudesComponent implements OnInit {
 
   ngOnInit() {
     this.solicitud = new SolicitudEmpleado();
+    this.value = new ValoresModel();
+
     this.getempleados()
     .subscribe( (resp: any ) => {
-    console.log(resp);
     this.Aemple = resp;
+    }, (err) => {
+      console.log(err.error.error.message);
+    });
+
+    this.getempleados1()
+    .subscribe( (resp: any ) => {
+    this.Aemple1 = resp;
     }, (err) => {
       console.log(err.error.error.message);
     });
   } 
   onSubmit( form: NgForm ){
-    console.log(this.solicitud);
-    this.crearSolicitud(this.solicitud)
+    const id = this.solicitud.rut;
+    this.buscar(this.solicitud.rut).subscribe( (resp: any) => {
+      this.solicitud.rut =  resp.rut;
+      this.crearSolicitud(this.solicitud)
         .subscribe( resp1 => {
-          console.log(resp1);
           window.location.reload();
         }, (err) => {
-          console.log(err.error.error.message);
           Swal.fire({
             type: 'error',
             title: 'Error al Modificar el Registro',
             text: err.error.error.message
           });
         });
+      }
+    );
+    
 
   }
-  crearSolicitud(solicitud: SolicitudEmpleado ){
-    return this.http.post(`${ this.url }.json`, solicitud);
+  deletesoli(id: any) {
+    console.log(id);
+    return this.http.delete(`${ this.url1 }/solicitud/${ id }.json`).subscribe(
+      resp => {
+        console.log(resp);
+        window.location.reload();
+      }
+    ), ( err1 => {
+      console.log(err1);
+    });
+  }
+  gdeleteEmpleado(id: any) {
+    this.value.id = id;
+  }
+  
+  buscar(id: any ){
+    return this.http.get(`${ this.url }/${ id }/empleado.json`)
+  }
+  crearSolicitud(solicitud: SolicitudEmpleado){
+    return this.http.post(`${ this.url1 }/solicitud.json`, solicitud);
   }
   getempleados() {
     return this.http.get(`${ this.url }.json`).pipe(
@@ -66,8 +98,24 @@ export class SolicitudesComponent implements OnInit {
       ASoli.push(empleado);
     });
     return ASoli;
+  }
+  getempleados1() {
+    return this.http.get(`${ this.url1 }/solicitud.json`).pipe(
+      map(this.creararray1)
+    );
+  }
+  private creararray1( arrays: Object ) {
+    const ASoli: SolicitudEmpleado[] = [];
+    if (arrays === null) {return []; }
+    Object.keys(arrays).forEach(key => {
+      const empleado: SolicitudEmpleado = arrays[key];
+      empleado.id = key;
+      ASoli.push(empleado);
+    });
+    return ASoli;
 
   }
+
 }
 
 
