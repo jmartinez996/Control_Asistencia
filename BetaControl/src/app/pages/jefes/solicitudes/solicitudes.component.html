@@ -1,15 +1,95 @@
+<div class="modal" id="demoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title title-center"><b>AGREGAR</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit( f )" #f="ngForm"> <br>
+                  <h6>Complete la información solicitada</h6> <br>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Tipo</div>
+                        </div>
+                        <select class="form-control" placeholder="Seleccionar" [(ngModel)]="solicitud.tipo" name="tipo" aria-describedby="addon-wrapping">
+                          <option value="seleccion">Seleccionar...</option>
+                          <option value="Pase">Pase Empleado</option>
+                          <option value="Hora Extra">Hora Extra</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Rut</div>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="solicitud.rut" name="rut" placeholder="Empleado" aria-describedby="addon-wrapping">
+                      </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Fecha</div>
+                        </div>
+                        <input type="date" class="form-control" [(ngModel)]="solicitud.fecha" name="fecha" placeholder="Ingresar Fecha" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Inicio</div>
+                        </div>
+                        <input type="time" class="form-control" [(ngModel)]="solicitud.horainicio" name="hora_inicio" placeholder="Ingresar Hora" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Término</div>
+                        </div>
+                        <input type="time" class="form-control" [(ngModel)]="solicitud.horatermino" name="hora_termino" placeholder="Ingresar Hora" aria-describedby="addon-wrapping">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" type="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <!-- Editable table -->
-<div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+<!--<div class="form-group">
+    <h4 class="font-weight-bold text-uppercase py-1">Tipo Solicitud:</h4>
+    <select class="form-control" [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+      <option value="0">Seleccionar...</option>
+      <option *ngFor="let dato of datos">{{dato}}</option>
+    </select>
+</div>-->
+
+<!-- Prueba para ver la opción seleccionado
+<p [hidden]="opcionSeleccionado == '0'">Haz seleccionado la opción {{ verSeleccion }}</p>-->
+
+
+<div class="card"> 
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Solicitudes</h3>
     <div class="card-body">
       <div id="table" class="table-editable">
         <span class="table-add float-right mb-3 mr-2">
           <a class="text-success" (click)="add()">
             <!-- <mdb-icon fas icon="plus" size="2x"></mdb-icon> -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#demoModal">Agregar Solicitud</button><br>
+            <!--<i class="material-icons" style="font-size:48px;color:green" data-toggle="modal" data-target="#demoModal">add_box</i>-->
           </a>
         </span>
+
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <tr>
+            <th class="text-center">Rut Empleado</th>
+            <th class="text-center">Fecha Solicitud</th>
+            <th class="text-center">Hora Inicio</th>
+            <th class="text-center">Hora Término</th>
+            <th class="text-center">Acción</th>
+          </tr>
+         <!-- <tr>
             <th class="text-center">Person Name</th>
             <th class="text-center">Age</th>
             <th class="text-center">Company Name</th>
@@ -35,25 +115,17 @@
               <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{person.city}}</span>
             </td>
             <td>
-              <span class="table-up">
-                <a class="indigo-text">
-                  <!--<mdb-icon fas icon="long-arrow-alt-up"></mdb-icon>-->
-                </a>
-              </span>
-              <span class="table-down">
-                <a class="indigo-text">
-                  <!--<mdb-icon fas icon="long-arrow-alt-down"></mdb-icon>-->
-                </a>
-              </span>
+              
             </td>
             <td>
               <span class="table-remove">
-                <!--<button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>-->
+                <button type="button" class="btn danger" (click)="remove(id)">Eliminar</button>
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
               </span>
             </td>
-          </tr>
+          </tr> -->
         </table>
       </div>
     </div>
-  </div>
+</div>
   <!-- Editable table -->
