@@ -24,3 +24,10 @@ export class DepartamentoModel {
 export class ValoresModel {
     id: string;
 }
+export class SolicitudEmpleado {
+    tipo: string;
+    rut: string;
+    fecha: string;
+    horainicio: string;
+    horatermino: string;
+}
