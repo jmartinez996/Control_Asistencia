@@ -30,17 +30,19 @@ export class SolicitudEmpleado {
     horatermino: string;
 }
 export class AusenciaModel {
-    rut:string;
-    fecha_inicio:string;
-    fecha_termino:string;
-    tipo:string;
-    observacion:string;
+    id: string;
+    rut: string;
+    fecha_inicio: string;
+    fecha_termino: string;
+    tipo: string;
+    observacion: string;
 }
 
 export class RetrasoModel {
-    rut:string;
-    fecha:string;
-    minutos:string;
-    tipo:string;
-    observacion:string;
+    id: string;
+    rut: string;
+    fecha: string;
+    minutos: string;
+    tipo: string;
+    observacion: string;
 }
