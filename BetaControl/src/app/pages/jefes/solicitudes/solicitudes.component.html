@@ -9,10 +9,10 @@
             </div>
             <div class="modal-body">
                 <form (ngSubmit)="onSubmit( f )" #f="ngForm"> <br>
-                    <h6>Complete la información solicitada</h6> <br>
+                  <h6>Complete la información solicitada</h6> <br>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <div class="input-group-text">Tipo</div>
+                          <div class="input-group-text">Tipo</div>
                         </div>
                         <select class="form-control" placeholder="Seleccionar" [(ngModel)]="solicitud.tipo" name="tipo" aria-describedby="addon-wrapping">
                           <option value="seleccion">Seleccionar...</option>
@@ -22,10 +22,10 @@
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <div class="input-group-text">Rut</div>
+                          <div class="input-group-text">Rut</div>
                         </div>
                         <input type="text" class="form-control" [(ngModel)]="solicitud.rut" name="rut" placeholder="Empleado" aria-describedby="addon-wrapping">
-                    </div>
+                      </div>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text">Fecha</div>
@@ -43,11 +43,6 @@
                             <div class="input-group-text">Término</div>
                         </div>
                         <input type="time" class="form-control" [(ngModel)]="solicitud.horatermino" name="hora_termino" placeholder="Ingresar Hora" aria-describedby="addon-wrapping">
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" type="submit">Registrar</button>
                     </div>
                 </form>
             </div>
@@ -69,34 +64,27 @@
 <p [hidden]="opcionSeleccionado == '0'">Haz seleccionado la opción {{ verSeleccion }}</p>-->
 
 
-<div class="card">
+<div class="card"> 
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Solicitudes</h3>
     <div class="card-body">
-        <div id="table" class="table-editable">
-            <span class="table-add float-right mb-3 mr-2">
-          <a class="text-success" >
-            <!-- <mdb-icon fas icon="plus"  (click)="add()" size="2x"></mdb-icon> -->
+      <div id="table" class="table-editable">
+        <span class="table-add float-right mb-3 mr-2">
+          <a class="text-success" (click)="add()">
+            <!-- <mdb-icon fas icon="plus" size="2x"></mdb-icon> -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#demoModal">Agregar Solicitud</button><br>
             <!--<i class="material-icons" style="font-size:48px;color:green" data-toggle="modal" data-target="#demoModal">add_box</i>-->
           </a>
         </span>
 
-            <table class="table table-bordered table-responsive-md table-striped text-center">
-                <tr>
-                    <th class="text-center">Rut Empleado</th>
-                    <th class="text-center">Fecha Solicitud</th>
-                    <th class="text-center">Hora Inicio</th>
-                    <th class="text-center">Hora Término</th>
-                    <th class="text-center">Acción</th>
-                </tr>
-                <tr *ngFor="let item of Aemple; let i = index">
-                    <th class="text-center">{{ item.rut }}</th>
-                    <th class="text-center">{{ item.fecha }}</th>
-                    <th class="text-center">{{ item.horainicio }}</th>
-                    <th class="text-center">{{ item.horatermino }}</th>
-                    <th class="text-center">{{ item.tipo }}</th>
-                </tr>
-                <!-- <tr>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Rut Empleado</th>
+            <th class="text-center">Fecha Solicitud</th>
+            <th class="text-center">Hora Inicio</th>
+            <th class="text-center">Hora Término</th>
+            <th class="text-center">Acción</th>
+          </tr>
+         <!-- <tr>
             <th class="text-center">Person Name</th>
             <th class="text-center">Age</th>
             <th class="text-center">Company Name</th>
@@ -131,8 +119,8 @@
               </span>
             </td>
           </tr> -->
-            </table>
-        </div>
+        </table>
+      </div>
     </div>
 </div>
-<!-- Editable table -->
+  <!-- Editable table -->

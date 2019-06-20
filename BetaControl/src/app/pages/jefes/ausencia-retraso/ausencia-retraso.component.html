@@ -1,3 +1,44 @@
-<p>
-  ausencia-retraso works!
-</p>
+<!-- Editable table -->
+<div class="form-group">
+    <h4 class="font-weight-bold text-uppercase py-1">Falta:</h4>
+    <select class="form-control" [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+        <option value="0">Seleccionar...</option>
+        <option *ngFor="let dato of datos">
+          {{dato}}
+        </option>
+    </select> 
+</div>
+
+
+<!-- Editable table -->
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{ verSeleccion }}</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Rut Empleado</th>
+            <th class="text-center">Tipo Falta</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">Observación</th>
+          </tr>
+          <tr *ngFor="let person of personList; let id = index">
+            <td>
+                <span>{{ falta.rut }}</span>
+            </td>
+            <td>
+                <span>{{ falta.tipo }}</span>
+            </td>
+            <td>
+                <!-- tipo falta es: justificado, injustificado -->
+                <span>{{ falta.fecha }}</span>
+            </td>
+            <td>
+                <span>{{ falta.observacion }}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Editable table -->
