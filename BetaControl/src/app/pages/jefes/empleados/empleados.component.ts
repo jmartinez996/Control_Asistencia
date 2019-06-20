@@ -17,6 +17,7 @@ export class EmpleadosComponent implements OnInit {
   private url = 'https://chamacos-43961.firebaseio.com/BaseDatos';
   usuario: UsuarioModel;
   empleado: EmpleadoModel;
+  empleado1: EmpleadoModel;
   depto: DepartamentoModel;
   recuerdame = false;
   Aemple: EmpleadoModel[] = [];
@@ -30,6 +31,7 @@ export class EmpleadosComponent implements OnInit {
     this.usuario = new UsuarioModel();
     this.usuario.email = '';
     this.empleado = new EmpleadoModel();
+    this.empleado1 = new EmpleadoModel();
     this.depto = new DepartamentoModel();
     this.value = new ValoresModel();
     this.getempleados()
@@ -39,7 +41,7 @@ export class EmpleadosComponent implements OnInit {
     }, (err) => {
       console.log(err.error.error.message);
     });
-    console.log(this.value)
+    console.log(this.value);
   }
   onSubmit( form: NgForm ) {
     if (form.invalid) {return; }
@@ -64,7 +66,8 @@ export class EmpleadosComponent implements OnInit {
           this.crearDepto(this.depto, id)
           .subscribe( resp2 => {
             console.log(resp2);
-            this.router.navigateByUrl('/jfhome');
+            this.router.navigateByUrl('/ver-empleados');
+            window.location.reload();
           }, (err) => {
             console.log(err.error.error.message);
             Swal.fire({
@@ -91,23 +94,52 @@ export class EmpleadosComponent implements OnInit {
 
       });
     }
+    onSubmit1( form: NgForm ) {
+      console.log(this.empleado1);
+      this.crearEmpleado(this.empleado1, this.value.id )
+        .subscribe( resp1 => {
+          console.log(resp1);
+          window.location.reload();
+        }, (err) => {
+          console.log(err.error.error.message);
+          Swal.fire({
+            type: 'error',
+            title: 'Error al Modificar el Registro',
+            text: err.error.error.message
+          });
+        });
+    }
     crearEmpleado( empleado: EmpleadoModel, id: any ) {
       return this.http.put(`${ this.url }/${ id }/empleado.json`, empleado);
     }
     crearDepto( depto: DepartamentoModel, id: any ) {
       return this.http.put(`${ this.url }/${ id }/departamento.json`, depto);
     }
+    gdeleteEmpleado(id: any) {
+      this.value.id = id;
+    }
     deleteEmpleado(id: any) {
-      console.log(id);
       return this.http.delete(`${ this.url }/${ id }.json`).subscribe(
         resp => {
           console.log(resp);
+          window.location.reload();
         }
       ), ( err1 => {
         console.log(err1);
-      })
-      
-
+      });
+    }
+    editEmpleado(id: any) {
+      this.value.id = id;
+      console.log(id);
+    }
+    getoneEmpleado(id: any ) {
+      console.log(id);
+      const ruta = `${ this.url }/${ id }/empleado.json`;
+      console.log(ruta);
+      return this.http.get(`${ this.url }/${ id }/empleado.json`).subscribe( (rep: any ) => {
+        this.empleado1 = rep;
+        console.log(this.empleado1);
+      });
     }
     getempleados() {
       return this.http.get(`${ this.url }.json`).pipe(
@@ -116,6 +148,7 @@ export class EmpleadosComponent implements OnInit {
     }
     private creararray( arrays: Object ) {
       const Aempleado: EmpleadoModel[] = [];
+      if (arrays === null) {return [];}
       Object.keys(arrays).forEach(key => {
         const empleado: EmpleadoModel = arrays[key];
         empleado.id = key;
@@ -124,8 +157,6 @@ export class EmpleadosComponent implements OnInit {
       return Aempleado;
 
     }
-    delete(algo: any) {
-      console.log(algo);
-    }
+    
   }
 
