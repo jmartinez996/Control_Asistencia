@@ -6,39 +6,55 @@
         <option *ngFor="let dato of datos">
           {{dato}}
         </option>
-    </select> 
+    </select>
 </div>
 
 
 <!-- Editable table -->
 <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{ verSeleccion }}</h3>
+    <h5 class="card-header text-center font-weight-bold text-uppercase py-4">Retrasos</h5>
     <div class="card-body">
-      <div id="table" class="table-editable">
-        <table class="table table-bordered table-responsive-md table-striped text-center">
-          <tr>
-            <th class="text-center">Rut Empleado</th>
-            <th class="text-center">Tipo Falta</th>
-            <th class="text-center">Fecha</th>
-            <th class="text-center">Observación</th>
-          </tr>
-          <tr *ngFor="let person of personList; let id = index">
-            <td>
-                <span>{{ falta.rut }}</span>
-            </td>
-            <td>
-                <span>{{ falta.tipo }}</span>
-            </td>
-            <td>
-                <!-- tipo falta es: justificado, injustificado -->
-                <span>{{ falta.fecha }}</span>
-            </td>
-            <td>
-                <span>{{ falta.observacion }}</span>
-            </td>
-          </tr>
-        </table>
-      </div>
+        <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">Rut Empleado</th>
+                    <th class="text-center">Tipo Falta</th>
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center">Minutos de Restrasos</th>
+                    <th class="text-center">Observacion</th>
+                </tr>
+                <tr *ngFor="let item2 of Aemple1; let i = index">
+                    <th class="text-center">{{ item2.rut }}</th>
+                    <th class="text-center">{{ item2.tipo }}</th>
+                    <th class="text-center">{{ item2.fecha }}</th>
+                    <th class="text-center">{{ item2.minutos}} </th>
+                    <th class="text-center">{{ item2.observacion }}</th>
+                </tr>
+            </table>
+        </div>
     </div>
-  </div>
-  <!-- Editable table -->
+</div>
+<div class="card">
+    <h5 class="card-header text-center font-weight-bold text-uppercase py-4">Ausencia</h5>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">Rut Empleado</th>
+                    <th class="text-center">Tipo Falta</th>
+                    <th class="text-center">Fecha de Inicio</th>
+                    <th class="text-center">Fecha de Termino</th>
+                    <th class="text-center">Observación</th>
+                </tr>
+                <tr *ngFor="let item1 of Aemple; let i = index">
+                    <th class="text-center">{{ item1.rut }}</th>
+                    <th class="text-center">{{ item1.tipo }}</th>
+                    <th class="text-center">{{ item1.fecha_inicio }}</th>
+                    <th class="text-center">{{ item1.fecha_termino}} </th>
+                    <th class="text-center">{{ item1.observacion }}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Editable table -->

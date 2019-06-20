@@ -1,7 +1,6 @@
 export class UsuarioModel {
     email: string;
     password: string;
-
 }
 export class EmpleadoModel {
     id: string; // Obtenida por google
@@ -14,8 +13,6 @@ export class EmpleadoModel {
     domicilio: string;
     email: string;
     telefono: number;
-
-
 }
 export class DepartamentoModel {
     nombre: string;
@@ -31,4 +28,19 @@ export class SolicitudEmpleado {
     fecha: string;
     horainicio: string;
     horatermino: string;
+}
+export class AusenciaModel {
+    rut:string;
+    fecha_inicio:string;
+    fecha_termino:string;
+    tipo:string;
+    observacion:string;
+}
+
+export class RetrasoModel {
+    rut:string;
+    fecha:string;
+    minutos:string;
+    tipo:string;
+    observacion:string;
 }
